@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import '../CSS/Login.css';
 import logo from '../assets/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+  const navigation = useNavigate();
 
   const [errors, setErrors] = useState({});
 
@@ -29,6 +30,7 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    navigation("/dashboard")
 
     // Perform client-side validation
     const newErrors = {};
@@ -117,7 +119,7 @@ export default function Login() {
         </div>
         <div className='d-flex mt-4'>
           <h5 className="text-secondary">Don't have an account?</h5>
-          <Link className='ml-2' to={"/"}><h5>Sign up</h5></Link>
+          <Link className='ml-2' to={"/ForexTradeClone"}><h5>Sign up</h5></Link>
         </div>
       </div>
     </div>

@@ -1,0 +1,8 @@
+.login_card {
+    background-color: black;
+    color: white;
+    width: 35vw;
+    height: auto;
+    border-radius: 20px;
+    boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)"
+}

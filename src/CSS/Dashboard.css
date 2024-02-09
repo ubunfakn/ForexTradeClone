@@ -1,0 +1,10 @@
+.card-animation {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.5s linear, transform 0.5s linear;
+}
+
+.card-animation.show {
+    opacity: 1;
+    transform: translateX(0);
+}

@@ -1,0 +1,37 @@
+.sidebar {
+    width: 280px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.sidebar-logo {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+.trade-options {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+  }
+  
+  .trade-options.show {
+    max-height: 200px; /* Adjust the max-height as needed */
+    transition: max-height 0.5s ease-in-out;
+  }
+
+.hover_links:hover{
+    background-color: #20c997;
+    cursor: pointer;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}

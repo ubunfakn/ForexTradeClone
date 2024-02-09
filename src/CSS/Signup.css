@@ -1,0 +1,25 @@
+.signup_container{
+  margin: 0;
+  padding: 0;
+  background-image: url('../assets/background_image.avif');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup_card{
+  background-color: black;
+  width: 50vw;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(41, 165, 99, 0.1);
+}
+
+.form button:hover{
+  background-color: #16AD4B!important;
+  color: black!important;
+}

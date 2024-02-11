@@ -7,8 +7,8 @@ export default function Navbar() {
     setSelectedLanguage(event.target.value);
   };
   return (
-    <div id='navbar' className='d-flex bg-white' style={{ width: "calc(100% - 280px)", marginLeft: "280px" }}>
-      <div className="hello_section mt-3 ml-5" style={{ width: "200px" }}>
+    <div id='navbar' className='d-flex bg-white' style={{ width: "calc(100% - 280px)", marginLeft: "280px", zIndex:"1000" }}>
+      <div className="hello_section mt-3 ml-5 mb-4" style={{ width: "200px" }}>
         <h5><strong>Hello Ankit Nashine,</strong></h5>
         <h6 style={{ fontSize: '12px', marginTop: "-3px" }}>Welcome to FOREXGROW Trader</h6>
       </div>

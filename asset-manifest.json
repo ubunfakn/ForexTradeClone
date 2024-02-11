@@ -1,18 +1,20 @@
 {
   "files": {
-    "main.css": "/ForexTradeClone/static/css/main.582f9d08.css",
-    "main.js": "/ForexTradeClone/static/js/main.0bf135a8.js",
+    "main.css": "/ForexTradeClone/static/css/main.9ac83972.css",
+    "main.js": "/ForexTradeClone/static/js/main.5091c53a.js",
     "static/js/592.94d68372.chunk.js": "/ForexTradeClone/static/js/592.94d68372.chunk.js",
-    "static/media/logo.png": "/ForexTradeClone/static/media/logo.03790e6b25a835bb6e0c.png",
-    "static/media/background_image.avif": "/ForexTradeClone/static/media/background_image.b0a470f9345d5e86c126.avif",
+    "static/media/reward.png": "/ForexTradeClone/static/media/reward.82e76045b87c34dfbd27.png",
+    "static/media/graph.png": "/ForexTradeClone/static/media/graph.4a6f7df9ab439df3c530.png",
+    "static/media/FX_grow_logo_new.png": "/ForexTradeClone/static/media/FX_grow_logo_new.68c54ab720b545c3c360.png",
+    "static/media/background_image_1.jpeg": "/ForexTradeClone/static/media/background_image_1.3072a7c801b594ff7253.jpeg",
     "static/media/logo.svg": "/ForexTradeClone/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/ForexTradeClone/index.html",
-    "main.582f9d08.css.map": "/ForexTradeClone/static/css/main.582f9d08.css.map",
-    "main.0bf135a8.js.map": "/ForexTradeClone/static/js/main.0bf135a8.js.map",
+    "main.9ac83972.css.map": "/ForexTradeClone/static/css/main.9ac83972.css.map",
+    "main.5091c53a.js.map": "/ForexTradeClone/static/js/main.5091c53a.js.map",
     "592.94d68372.chunk.js.map": "/ForexTradeClone/static/js/592.94d68372.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.582f9d08.css",
-    "static/js/main.0bf135a8.js"
+    "static/css/main.9ac83972.css",
+    "static/js/main.5091c53a.js"
   ]
 }

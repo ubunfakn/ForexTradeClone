@@ -8,7 +8,15 @@
     left: 0;
     overflow-y: auto;
     border-right: 2px solid lightgray;
+    /* Hide scrollbar for WebKit (Chrome, Safari) */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
 }
+
+.sidebar::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari */
+}
+
 
 .sidebar-logo {
     text-align: center;
@@ -31,8 +39,17 @@
   }
 
 .hover_links:hover{
-    background-color: #20c997;
+    background-color: #ffff;
     cursor: pointer;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
+    color: #0000;
+}
+
+.side_links:hover{
+    color: #0000!important;
+}
+
+.hover_links h6:hover{
+    color: black;
 }

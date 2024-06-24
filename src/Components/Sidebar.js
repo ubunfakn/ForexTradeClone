@@ -8,7 +8,7 @@ export default function Sidebar() {
     const [showFundOption, setShowFundOPtion] = useState(false);
     const [showTerminalDownloadLink, setShowTerminalDownloadLink] = useState(false);
     return (
-        <div className="sidebar bg-dark">
+        <div className="sidebar" style={{backgroundColor:"#114693"}}>
             <div className="sidebar-logo mt-3">
                 <img src={logo} alt="Logo" style={{ width: "150px", height: "30px" }} />
             </div>

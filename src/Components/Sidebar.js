@@ -94,7 +94,7 @@ export default function Sidebar() {
                 linkDiv.style.transform = 'translateY(0)';
             }, index * 200); // Adjust the delay as needed
         });
-    }, []); 
+    }, [isSideBarVisible]); 
 
     const handleClick = (index) => {
         if (index === clickedLinkIndex) {

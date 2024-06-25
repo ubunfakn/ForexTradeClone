@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../CSS/Navbar.css'
+import logo from '../assets/logo-dark.png'
 
 export default function Navbar() {
   const [selectedLanguage, setSelectedLanguage] = useState('English');
@@ -7,9 +8,10 @@ export default function Navbar() {
     setSelectedLanguage(event.target.value);
   };
   return (
-    <div id='navbar' className='d-flex justify-content-between' style={{ width: "calc(100% - 280px)", marginLeft: "280px", zIndex:"1000", backgroundColor:"#e5e9f2" }}>
+    <div id='navbar' className='d-flex justify-content-between' style={{ width: "100vw", zIndex:"1000", backgroundColor:"#e5e9f2", height:"70px" }}>      
       <div className="hello_section mt-3 ml-5 mb-4" style={{ width: "200px" }}>
-        <h6><strong>Hello Ankit Nashine,</strong></h6>
+        {/* <h6><strong>Hello Ankit Nashine,</strong></h6> */}
+        <img src={logo} alt="Logo" style={{ width: "150px", height: "30px" }} />
         {/* <h6 style={{ fontSize: '12px', marginTop: "-3px" }}>Welcome to FOREXGROW Trader</h6> */}
       </div>
 

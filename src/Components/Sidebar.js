@@ -1,104 +1,127 @@
-import React, { useState } from 'react'
-import logo from '../assets/FX_grow_logo_new.png';
+import React, { useEffect, useState } from 'react'
+import logo from '../assets/logo-dark.png';
 import { Link } from 'react-router-dom';
 import '../CSS/Sidebar.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faBell, faBook, faBriefcase, faChartBar, faEdit, faFolder, faGraduationCap, faImages, faServer, faUserCog, faUserFriends, faWrench } from '@fortawesome/free-solid-svg-icons';
 
 export default function Sidebar() {
-    const [showTradeOPtion, setShowTradeOption] = useState(false);
-    const [showFundOption, setShowFundOPtion] = useState(false);
-    const [showTerminalDownloadLink, setShowTerminalDownloadLink] = useState(false);
+    const [isSideBarVisible, setIsSideBarVisible] = useState(true);
+    const [clickedLinkIndex, setClickedLinkIndex] = useState(null);
+
+    const arrayOfSidebarLinks = [
+        {
+            id: 1,
+            name: "Dashboard",
+            link: "/admin_dashboard",
+            icon: faChartBar,
+        },
+        {
+            id: 2,
+            name: "Product Category",
+            link: "/admin_category",
+            icon: faFolder,
+        },
+        {
+            id: 3,
+            name: "Product Gallery",
+            link: "/admin_gallery",
+            icon: faImages,
+        },
+        {
+            id: 4,
+            name: "Product Catalogs",
+            link: "/admin_catalogs",
+            icon: faBook,
+        },
+        {
+            id: 5,
+            name: "Our Teams",
+            link: "/admin_teams",
+            icon: faUserFriends,
+        },
+        {
+            id: 6,
+            name: "Our Services",
+            link: "/admin_dashboard",
+            icon: faWrench,
+            services: [
+                {
+                    id: 101,
+                    name: "LiuGong Services",
+                    link: "/admin_dashboard",
+                    icon: faChartBar,
+                },
+                {
+                    id: 102,
+                    name: "Ajax Services",
+                    link: "/admin_dashboard",
+                    icon: faChartBar,
+                },
+                {
+                    id: 102,
+                    name: "Rental Services",
+                    link: "/admin_dashboard",
+                    icon: faChartBar,
+                },
+            ]
+        },
+        {
+            id: 7,
+            name: "Careers",
+            link: "/admin_dashboard",
+            icon: faBriefcase,
+        },
+        {
+            id: 8,
+            name: "Employee Manage",
+            link: "/admin_dashboard",
+            icon: faUserCog,
+        },
+        {
+            id: 9,
+            name: "Price Variation Limit",
+            link: "/admin_dashboard",
+            icon: faEdit,
+        },
+    ]
+    useEffect(() => {
+        // Trigger animation on mount
+        const linkDivs = document.querySelectorAll('.link_div');
+        linkDivs.forEach((linkDiv, index) => {
+            setTimeout(() => {
+                linkDiv.style.opacity = '1';
+                linkDiv.style.transform = 'translateY(0)';
+            }, index * 200); // Adjust the delay as needed
+        });
+    }, []); 
+
+    const handleClick = (index) => {
+        if (index === clickedLinkIndex) {
+            setClickedLinkIndex(null); // Deselect if already selected
+        } else {
+            setClickedLinkIndex(index); // Select the clicked index
+        }
+    };
     return (
-        <div className="sidebar" style={{backgroundColor:"#114693"}}>
-            <div className="sidebar-logo mt-3">
-                <img src={logo} alt="Logo" style={{ width: "150px", height: "30px" }} />
+        <div>
+        {isSideBarVisible && <div className="sidebar-overlay" onClick={() => setIsSideBarVisible(!isSideBarVisible)}></div>}
+        <FontAwesomeIcon id='barsclick' onClick={() => setIsSideBarVisible(!isSideBarVisible)} style={{ fontSize: "25px", color: "black", display: "block" }} icon={faBars} />
+        {isSideBarVisible && (
+            <div className={`sidebar ${isSideBarVisible ? 'show' : ''}`} style={{ backgroundColor: "#114693", paddingBottom: "20px" }}>
+                {arrayOfSidebarLinks.map((item, index) => (
+                    <div key={index}  className={`link_div ${index===clickedLinkIndex ? 'clicked' : 'show'}`} onClick={()=>handleClick(index)} style={{ marginTop: "2vh", height:"6vh" }}>
+                        <div className='d-flex' style={{ justifyContent: "start" }} id="dashboard_link">
+                            <div style={{ width: "30px" }}>
+                                <FontAwesomeIcon className='link_icons' icon={item.icon} style={{ padding: "0px", fontSize: "15px", color: "#ffff" }} />
+                            </div>
+                            <h6 style={{ fontSize: "14px", color: "#ffff" }}>{item.name}</h6>
+                        </div>
+                    </div>
+                ))}
             </div>
-            <div id='link_div' className="mt-4">
-                <div className='d-flex p-3 hover_links align-items-center' id="dashboard_link">
-                    <i className="fa-solid fa-house"></i>
-                    <h6 style={{fontSize:"0.9vw"}} className='ml-3'>Dashboard</h6>
-                </div>
-
-
-
-                <div className='d-flex p-3 hover_links mt-1 align-items-center' id="my_account_link">
-                    <i className="fa-solid fa-gear" style={{ fontSize: "1vw" }}></i>
-                    <h6 style={{fontSize:"0.9vw"}} className='ml-3'>My Account</h6>
-                </div>
-
-
-
-                <div className='d-flex p-3 hover_links mt-1 align-items-center' id="topup_wallet_link">
-                    <i className="fa-brands fa-google-wallet" style={{ fontSize: "0.9vw" }}></i>
-                    <h6 style={{fontSize:"0.9vw"}} className='ml-3'>Topup Wallet</h6>
-                </div>
-                <div onClick={() => setShowTradeOption(!showTradeOPtion)} className='d-flex p-3 hover_links mt-1' id="all_trades_link">
-                    <i className="fa-solid fa-money-bill-wave mt-1" style={{ fontSize: "1vw" }}></i>
-                    <h6 style={{fontSize:"0.9vw"}} className='ml-3'>Activation</h6>
-                    {/* <i
-                        style={{ marginLeft: "47%", cursor: "pointer", transition: "transform 0.3s" }}
-                        className={`fa-solid fa-chevron-down ${showTradeOPtion ? 'rotate' : ''}`}
-                    ></i> */}
-                </div>
-                <div className='d-flex p-3 hover_links mt-1' id="ibrequest_link">
-                    <i className="fa-solid fa-sliders mt-1" style={{ fontSize: "0.8vw" }}></i>
-                    <h6 style={{fontSize:"0.9vw"}} className='ml-3'>Achievements</h6>
-                </div>
-                <div className='d-flex p-3 hover_links mt-1' id="wallet_transaction_link">
-                    <i className="fa-solid fa-dollar-sign mt-1" style={{ fontSize: "0.8vw" }}></i>
-                    <h6 style={{fontSize:"0.9vw"}} className='ml-3'>Bonus Portfolio</h6>
-                </div>
-                <div onClick={() => setShowFundOPtion(!showFundOption)} className='d-flex p-3 hover_links mt-1' id="my_fund_link">
-                    <i className="fa-solid fa-dollar-sign mt-1" style={{ fontSize: "0.8vw" }}></i>
-                    <h6 style={{fontSize:"0.9vw"}} className='ml-3'>Bonus Wallet</h6>
-                    {/* <i
-                        style={{ marginLeft: "54%", cursor: "pointer", transition: "transform 0.3s" }}
-                        className={`fa-solid fa-chevron-down ${showFundOption ? 'rotate' : ''}`}
-                    ></i> */}
-                </div>
-                {/* <div className={`ml-3 trade-options ${showFundOption ? 'show' : ''}`}>
-                    <div className='d-flex p-3 mt-1' id="deposit_link">
-                        <h6 className='ml-3'>Deposit</h6>
-                    </div>
-                    <div className='d-flex p-3 mt-1' id="withdraw_link">
-                        <h6 className='ml-3'>Withdraw</h6>
-                    </div>
-                    <div className='d-flex p-3 mt-1' id="internal_transfer_link">
-                        <h6 className='ml-3'>Internal Transfer</h6>
-                    </div>
-                </div> */}
-                <div onClick={() => setShowTerminalDownloadLink(!showTerminalDownloadLink)} className='d-flex p-2 hover_links mt-2' id="terminal_download_link">
-                    <i className="fa-solid fa-link mt-1 ml-1" style={{ fontSize: "0.8vw" }}></i>
-                    <h6 style={{fontSize:"0.9vw"}} className='ml-2'>My Community</h6>
-                    {/* <i
-                        style={{ marginLeft: "10%", cursor: "pointer", transition: "transform 0.3s" }}
-                        className={`fa-solid fa-chevron-down ${showTerminalDownloadLink ? 'rotate' : ''}`}
-                    ></i> */}
-                </div>
-                {/* <div className={`ml-3 trade-options ${showTerminalDownloadLink ? 'show' : ''}`}>
-                    <div className='d-flex p-3' id="wlm_link">
-                        <h6 style={{ fontSize: "15px" }} className='ml-3'>Windows | Linux | MacOS</h6>
-                    </div>
-                    <div className='d-flex p-3' id="ios_link">
-                        <h6 style={{ fontSize: "15px" }} className='ml-3'>IOS</h6>
-                    </div>
-                    <div className='d-flex p-3 mt-1' id="android_link">
-                        <h6 style={{ fontSize: "15px" }} className='ml-3'>Android</h6>
-                    </div>
-                </div> */}
-                <div className='d-flex p-2 hover_links mt-2' id="my_tickets_link">
-                    <i className="fa-solid fa-ticket mt-2 ml-1" style={{ fontSize: "0.8vw" }}></i>
-                    <h6 style={{fontSize:"0.9vw"}} className='ml-2 p-1'>Withdrawal</h6>
-                </div>
-                <div className='d-flex p-2 hover_links mt-2' id="my_tickets_link">
-                    <i className="fa-solid fa-ticket mt-2 ml-1" style={{ fontSize: "0.8vw" }}></i>
-                    <h6 style={{fontSize:"0.9vw"}} className='ml-2 p-1'>Help Desk</h6>
-                </div>
-                <div className='d-flex p-2 hover_links mt-2' id="my_tickets_link">
-                    <i className="fa-solid fa-right-from-bracket mt-2 ml-1" style={{ fontSize: "1vw" }}></i>
-                    <h6 style={{fontSize:"0.9vw"}} className='ml-2 p-1'>logout</h6>
-                </div>
-            </div>
-
-        </div >
+        )}
+    </div>
+    
     )
 }

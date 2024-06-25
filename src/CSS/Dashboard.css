@@ -1,15 +1,5 @@
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes scaleIn {
+/* Keyframes for scaleInOnHover */
+@keyframes scaleInOnHover {
     from {
         transform: scale(1);
     }
@@ -18,22 +8,59 @@
     }
 }
 
-.animated {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-}
-
-.fadeInUp {
-    animation-name: fadeInUp;
-}
-
-.scaleIn {
-    animation-name: scaleIn;
-    animation-duration: 0.3s;
-    animation-fill-mode: both;
+.cards {
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
 }
 
 .cards:hover {
-    animation: scaleIn 0.3s forwards;
+    transform: scale(1.1); /* Scale up on hover */
+}
+
+@media(max-width:850px){
+    #dashboard_section{
+        width: 95vw !important;
+        margin-left: 2.5vw!important;
+    }
+
+    .cards{
+        width: 30vw !important;
+        margin-left: 3.5vw !important;
+    }
+
+    #side_panel_heading{
+        margin-left: 2.5vw !important;
+    }
+
+    #profile_circle i{
+        font-size: 1.2vw !important;
+    }
+
+    .cards h5{
+        font-size: 1.4vw !important;
+    }
+}
+
+@media(max-width:500px){
+    #top_cards{
+        flex-direction: column!important;
+    }
+
+    .cards{
+        width: 90vw!important;
+        margin-left: 5vw !important;
+    }
+
+    #profile_circle{
+        width: 35px !important;
+        height: 35px !important;
+    }
+
+    #profile_circle i{
+        font-size: 15px !important;
+    }
+    .cards h5{
+        font-size: 15px !important;
+    }
 }
 

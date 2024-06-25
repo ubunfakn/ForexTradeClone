@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import '../CSS/Navbar.css'
 import logo from '../assets/logo-dark.png'
-
 export default function Navbar() {
   const [selectedLanguage, setSelectedLanguage] = useState('English');
   const handleLanguageChange = (event) => {

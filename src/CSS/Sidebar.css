@@ -83,6 +83,10 @@
     color: black !important;;
 }
 
+.link_div:hover .right-left-link{
+    color: black !important;
+}
+
 .clicked {
     border: 8px solid white !important;
     margin-left: 0px !important;

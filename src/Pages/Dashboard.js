@@ -1,12 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Sidebar from '../Components/Sidebar'
 import Navbar from '../Components/Navbar'
-import lightBgImage from '../assets/light_background.jpg';
-import rewardImage from '../assets/reward.png';
-import graph from '../assets/graph.png';
 import '../CSS/Dashboard.css';
-import Footer from '../Components/Footer';
-import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
     return (

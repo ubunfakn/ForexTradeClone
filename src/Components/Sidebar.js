@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import logo from '../assets/logo-dark.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../CSS/Sidebar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faBell, faBook, faBriefcase, faChartBar, faEdit, faFolder, faGraduationCap, faImages, faServer, faUserCog, faUserFriends, faWrench } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faBook, faBriefcase, faChartBar, faEdit, faFolder, faGraduationCap, faImages, faServer, faUserCog, faUserFriends, faWrench } from '@fortawesome/free-solid-svg-icons';
 
 export default function Sidebar() {
     const [isSideBarVisible, setIsSideBarVisible] = useState(true);
     const [clickedLinkIndex, setClickedLinkIndex] = useState(null);
+    const navigation = useNavigate("");
 
     const arrayOfSidebarLinks = [
         {
@@ -102,6 +102,7 @@ export default function Sidebar() {
         } else {
             setClickedLinkIndex(index); // Select the clicked index
         }
+        // navigation(arrayOfSidebarLinks[index].link);
     };
     return (
         <div>

@@ -9,11 +9,11 @@
     border-right: 2px solid lightgray;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    border-radius: 35px 0px 0px 35px;
+    border-radius: 25px 25px 25px 25px;
     height: 85vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     transition: transform 0.9s ease-in-out;
     background-color: #114693;
     padding-bottom: 20px;
@@ -67,15 +67,18 @@
     margin-right: 10px !important;
     padding-left: 15px !important;
     position: relative;
+    /* z-index: -1!important; */
 }
 
 .link_div:hover {
     background-color: white !important;
+    z-index: -1!important;
 }
 
 .link_div:hover .link_icons,
 .link_div:hover h6 {
     color: black !important;
+    z-index: -1!important;
 }
 
 .clicked {
@@ -89,7 +92,7 @@
 }
 
 .services-dropdown {
-    background-color: #fff;
+    background-color: #ffff;
     padding: 5px 20px;
     border-radius: 0px 25px 25px 0px;
     margin-left: 5px;
@@ -99,16 +102,19 @@
     left: 8%;
     min-width: auto;
     display: none!important;
+    z-index: 1000!important;
 }
 
 .link_div:hover .services-dropdown {
-    display: list-item!important;
+    display: block!important;
     text-decoration: none;
+    z-index: 1!important;
 }
 
 .service-link:hover .services-dropdown{
     display: block!important;
     text-decoration: none;
+    z-index: 1!important;
 }
 
 .service-link {
@@ -119,17 +125,20 @@
     transition: background-color 0.3s ease;
     text-decoration: none;
     font-size: 15px!important;
+    z-index: 1!important;
 }
 
 .service-link:hover {
     background-color: #ffff;
     z-index: 1001!important;
     text-decoration: none;
+    z-index: 1!important;
 }
 
 .service-link span {
     margin-left: 10px;
     text-decoration: none;
+    z-index: 1!important;
 }
 
 
@@ -156,6 +165,7 @@
         background-color: #114693;
         padding-bottom: 20px;
         z-index: 500;
+        border-radius: 0px 25px 25px 0px;
     }
 
     .sidebar.show {

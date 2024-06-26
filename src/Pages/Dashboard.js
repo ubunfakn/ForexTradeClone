@@ -2,6 +2,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import Sidebar from '../Components/Sidebar'
 import Navbar from '../Components/Navbar'
 import '../CSS/Dashboard.css';
+import AddCategoryModal from '../Components/AddCategoryModal';
+import AddGalleryModal from '../Components/AddGalleryModal';
+import AddCatalogModal from '../Components/AddCatalogModal';
+import AddTeamModal from '../Components/AddTeamModal';
+import AddTestimonialModal from '../Components/AddTestimonialModal';
+import AddEnquiryMail from '../Components/AddEnquiryMail';
 
 export default function Dashboard() {
     return (
@@ -54,6 +60,12 @@ export default function Dashboard() {
 
                 </div>
             </div>
+            {/* <AddCategoryModal />
+            <AddGalleryModal />
+            <AddCatalogModal />
+            <AddTeamModal />
+            <AddTestimonialModal />
+            <AddEnquiryMail /> */}
         </div>
     )
 }

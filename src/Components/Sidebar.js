@@ -35,6 +35,7 @@ export default function Sidebar() {
             name: 'Product Catalogs',
             link: '/admin_catalogs',
             icon: faBook,
+            parentId: 6
         },
         {
             id: 5,
@@ -132,17 +133,17 @@ export default function Sidebar() {
                     {arrayOfSidebarLinks.map((item, index) => (
                         <div key={index} className={`link_div ${index === clickedLinkIndex ? 'clicked' : 'show'}`} onClick={() => handleClick(index)} onMouseEnter={() => handleDropdownEnter(index)} onMouseLeave={handleDropdownLeave} style={{ marginTop: '2vh', height: '6vh' }}>
                             <div className='d-flex' style={{ justifyContent: 'start' }} id='dashboard_link'>
-                                <div style={{ width: '30px', zIndex:-1 }}>
-                                    <FontAwesomeIcon className='link_icons' icon={item.icon} style={{ padding: '0px', fontSize: '15px', color: '#ffff', zIndex:-1 }} />
+                                <div style={{ width: '30px', zIndex: -1 }}>
+                                    <FontAwesomeIcon className='link_icons' icon={item.icon} style={{ padding: '0px', fontSize: '15px', color: '#ffff', zIndex: -1 }} />
                                 </div>
                                 <h6 style={{ fontSize: '14px', color: '#ffff' }}>{item.name}</h6>
                             </div>
-                            <div style={{zIndex:1}}>
+                            <div style={{ zIndex: 1 }}>
                                 {index === hoveredDropdownIndex && item.services && (
-                                    <div onMouseEnter={() => handleServiceEnter(index)} onMouseOver={()=>handleServiceEnter(index)} onMouseLeave={handleServiceLeave} style={{ zIndex: 1 }} className='services-dropdown'>
+                                    <div onMouseEnter={() => handleServiceEnter(index)} onMouseOver={() => handleServiceEnter(index)} onMouseLeave={handleServiceLeave} style={{ zIndex: 1 }} className='services-dropdown'>
                                         {item.services.map((service, i) => (
-                                            <Link key={i} className='service-link' to={service.link} style={{zIndex:1}} onClick={() => setIsSideBarVisible(false)}>
-                                                {service.name}
+                                            <Link key={i} className='service-link' to={service.link} style={{ zIndex: 1 }} onClick={() => setIsSideBarVisible(false)}>
+                                                <span>{service.name}</span>
                                             </Link>
                                         ))}
                                     </div>
@@ -150,8 +151,13 @@ export default function Sidebar() {
                             </div>
                         </div>
                     ))}
+                    <div>
+                        <h6 style={{fontSize:"0.6vw", marginLeft:"25px", marginTop:"25px"}} className='text-light'>Last Login :</h6>
+                        <h6 style={{fontSize:"0.6vw", marginLeft:"25px"}} className='text-light'>2024 06, 26</h6>
+                    </div>
                 </div>
             )}
+
         </div>
     );
 }

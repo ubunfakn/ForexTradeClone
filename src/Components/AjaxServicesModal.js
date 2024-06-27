@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { Form, Button, Modal } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function AddEnquiryMail({ variant, isUpdate }) {
+function AjaxServicesModal({ variant, isUpdate }) {
   const { control, handleSubmit, formState: { errors }, reset, setValue } = useForm();
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ function AddEnquiryMail({ variant, isUpdate }) {
         throw new Error('Failed to fetch data');
       }
       const data = await response.json();
-
+      
       // Assuming your API response matches the form field names
       setValue('catalogName', data.catalogName);
       setValue('catalogDescription', data.catalogDescription);
@@ -61,12 +61,12 @@ function AddEnquiryMail({ variant, isUpdate }) {
       if (!response.ok) {
         throw new Error('Failed to add catalog');
       }
-
+      
       console.log('Catalog added successfully!');
-
+      
     } catch (error) {
       console.error('Error adding catalog:', error);
-    } finally {
+    } finally{
       setLoading(false);
     }
   };
@@ -74,152 +74,101 @@ function AddEnquiryMail({ variant, isUpdate }) {
   return (
     <>
       <Button variant={variant} onClick={handleShow}>
-        {isUpdate ? <FontAwesomeIcon icon={faEdit} /> : 'Add New Enquiry Email'}
+        {isUpdate ? <FontAwesomeIcon icon={faEdit} /> : 'Add New Product'}
       </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-        <Modal.Title style={{ fontSize: "17px" }}>{isUpdate ? 'Update Enquiry Mail' : 'Add New Enquiry Mail'}</Modal.Title>
+        <Modal.Title style={{ fontSize: "17px" }}>{isUpdate ? 'Update Product' : 'Add New Product'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit(onSubmit)}>
-            <Form.Group controlId="name">
-              <Form.Label>Name</Form.Label>
+            <Form.Group controlId="productName">
+              <Form.Label>Product Name</Form.Label>
               <Controller
-                name="name"
+                name="productName"
                 control={control}
-                rules={{ required: "Name is required" }}
+                rules={{ required: "Product Name is required" }}
                 render={({ field }) => (
                   <Form.Control
                     {...field}
                     type="text"
-                    placeholder="Name"
+                    placeholder="Product Name"
                     autoFocus
-
-                    isInvalid={!!errors.name}
+                    style={{ fontSize: "13px" }}
+                    isInvalid={!!errors.productName}
                   />
                 )}
               />
-              {errors.name && (
+              {errors.productName && (
                 <Form.Control.Feedback type="invalid">
-                  {errors.name.message}
+                  {errors.productName.message}
                 </Form.Control.Feedback>
               )}
             </Form.Group>
 
-            <Form.Group controlId="userEmail" className="mt-3">
-              <Form.Label>User Email</Form.Label>
+            <Form.Group controlId="productDescription" className="mt-3">
+              <Form.Label>Product Description</Form.Label>
               <Controller
-                name="userEmail"
+                name="productDescription"
                 control={control}
-                rules={{ required: "User Email is required", pattern: /^\S+@\S+$/i }}
+                // rules={{ required: "Product Description is required" }}
                 render={({ field }) => (
                   <Form.Control
                     {...field}
-                    type="email"
-                    placeholder="User Email"
-
-                    isInvalid={!!errors.userEmail}
+                    type="text"
+                    placeholder="Product Description"
+                    style={{ fontSize: "13px" }}
+                    // isInvalid={!!errors.productDescription}
                   />
                 )}
               />
-              {errors.userEmail && (
+              {errors.productDescription && (
                 <Form.Control.Feedback type="invalid">
-                  {errors.userEmail.message}
+                  {errors.productDescription.message}
                 </Form.Control.Feedback>
               )}
             </Form.Group>
 
-            <Form.Group controlId="userPassword" className="mt-3">
-              <Form.Label>User Password</Form.Label>
+            <Form.Group controlId="categoryName" className="mt-3">
+              <Form.Label>Category Name</Form.Label>
               <Controller
-                name="userPassword"
+                name="categoryName"
                 control={control}
-                rules={{ required: "User Password is required" }}
+                rules={{ required: "Category Name is required" }}
                 render={({ field }) => (
-                  <Form.Control
+                  <Form.Select
                     {...field}
-                    type='password'
-                    placeholder="User Password"
-
-                    isInvalid={!!errors.userPassword}
-                  />
+                    aria-label="Category Name"
+                    style={{ fontSize: "13px" }}
+                    isInvalid={!!errors.categoryName}
+                  >
+                    <option>Select</option>
+                    <option>Category 1</option>
+                    <option>Category 2</option>
+                    <option>Category 3</option>
+                  </Form.Select>
                 )}
               />
-              {errors.userPassword && (
+              {errors.categoryName && (
                 <Form.Control.Feedback type="invalid">
-                  {errors.userPassword.message}
+                  {errors.categoryName.message}
                 </Form.Control.Feedback>
               )}
             </Form.Group>
 
-            <Form.Group controlId="hostName" className="mt-3">
-              <Form.Label>Host Name</Form.Label>
+            <Form.Group controlId="productImage" className="mt-3">
+              <Form.Label>Product Image</Form.Label>
               <Controller
-                name="hostName"
+                name="productImage"
                 control={control}
-                rules={{ required: "Host Name is required" }}
                 render={({ field }) => (
                   <Form.Control
                     {...field}
-                    type='text'
-                    placeholder="Host Name"
-
-                    isInvalid={!!errors.hostName}
+                    type="file"
+                    accept="image/*"
                   />
                 )}
               />
-              {errors.hostName && (
-                <Form.Control.Feedback type="invalid">
-                  {errors.hostName.message}
-                </Form.Control.Feedback>
-              )}
-            </Form.Group>
-
-            <Form.Group controlId="portNumber" className="mt-3">
-              <Form.Label>Port Number</Form.Label>
-              <Controller
-                name="portNumber"
-                control={control}
-                rules={{ required: "Port Number is required" }}
-                render={({ field }) => (
-                  <Form.Control
-                    {...field}
-                    type='number'
-                    placeholder="Port Number"
-
-                    isInvalid={!!errors.portNumber}
-                  />
-                )}
-              />
-              {errors.portNumber && (
-                <Form.Control.Feedback type="invalid">
-                  {errors.portNumber.message}
-                </Form.Control.Feedback>
-              )}
-            </Form.Group>
-
-            <Form.Group controlId="securityCrypto" className="mt-3">
-              <Form.Label>Security Crypto</Form.Label>
-              <Controller
-                name="securityCrypto"
-                control={control}
-                rules={{ required: "Security Crypto is required" }}
-                render={({ field }) => (
-                  <Form.Control
-                    {...field}
-                    type='text'
-                    placeholder="Security Crypto"
-
-                    isInvalid={!!errors.securityCrypto}
-                  />
-                )}
-              />
-              {errors.securityCrypto && (
-                <Form.Control.Feedback type="invalid">
-                  {errors.securityCrypto.message}
-                </Form.Control.Feedback>
-              )}
             </Form.Group>
 
             <Button variant="secondary" className='mt-4' onClick={handleClose}>
@@ -235,4 +184,4 @@ function AddEnquiryMail({ variant, isUpdate }) {
   );
 }
 
-export default AddEnquiryMail;
+export default AjaxServicesModal;

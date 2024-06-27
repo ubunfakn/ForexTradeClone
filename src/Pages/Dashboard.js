@@ -8,6 +8,12 @@ import AddCatalogModal from '../Components/AddCatalogModal';
 import AddTeamModal from '../Components/AddTeamModal';
 import AddTestimonialModal from '../Components/AddTestimonialModal';
 import AddEnquiryMail from '../Components/AddEnquiryMail';
+import AjaxServicesModal from '../Components/AjaxServicesModal';
+import LuiGongServicesModal from '../Components/LuiGongServicesModal';
+import RentalServicesModal from '../Components/RentalServicesModal';
+import SiteViewConfigModal from '../Components/SiteViewConfigModal';
+import CareerModal from '../Components/CareerModal';
+import AddEmployeeModal from '../Components/AddEmployeeModal';
 
 export default function Dashboard() {
     return (
@@ -60,12 +66,28 @@ export default function Dashboard() {
 
                 </div>
             </div>
-            {/* <AddCategoryModal />
-            <AddGalleryModal />
-            <AddCatalogModal />
-            <AddTeamModal />
-            <AddTestimonialModal />
-            <AddEnquiryMail /> */}
+            <AddCatalogModal variant={"warning"} isUpdate={true} />
+            <AddCategoryModal variant={"warning"} isUpdate={true} />
+            <AddGalleryModal variant={"warning"} isUpdate={true} />
+            <AddTeamModal variant={"warning"} isUpdate={true} />
+            <AddTestimonialModal variant={"warning"} isUpdate={true} />
+            <AddEnquiryMail variant={"warning"} isUpdate={true} />
+            <AjaxServicesModal variant={"warning"} isUpdate={true} />
+            <LuiGongServicesModal variant={"warning"} isUpdate={true} />
+            <RentalServicesModal variant={"warning"} isUpdate={true} />
+            <SiteViewConfigModal variant={"warning"} isUpdate={true} />
+            <CareerModal variant={"warning"} isUpdate={true} />
+             {/* <AddCatalogModal variant={"success"} isUpdate={false} />
+            <AddCategoryModal variant={"success"} isUpdate={false} />
+            <AddGalleryModal variant={"success"} isUpdate={false} />
+            <AddTeamModal variant={"success"} isUpdate={false} />
+            <AddTestimonialModal variant={"success"} isUpdate={false} />
+            <AddEnquiryMail variant={"success"} isUpdate={false} />
+            <AjaxServicesModal variant={"success"} isUpdate={false} />
+            <LuiGongServicesModal variant={"success"} isUpdate={false} />
+            <RentalServicesModal variant={"success"} isUpdate={false} />
+            <SiteViewConfigModal variant={"success"} isUpdate={false} />
+            <CareerModal variant={"success"} isUpdate={false} /> */}
         </div>
     )
 }
